@@ -507,69 +507,50 @@
       font-size: 0.78rem;
     }
 
-    /* CONTACT */
+    /* VIDEO EMBED */
 
-    .contact-grid {
-      display: grid;
-      gap: 1.8rem;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      align-items: start;
-    }
-
-    .contact-card {
-      background: rgba(15, 23, 42, 0.95);
-      border-radius: var(--radius);
-      padding: 1.3rem 1.4rem 1.5rem;
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.85);
-    }
-
-    .contact-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.55rem;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      margin-bottom: 1.2rem;
-    }
-
-    .contact-row strong {
-      color: var(--text);
-      font-size: 0.95rem;
-    }
-
-    form {
-      display: grid;
-      gap: 0.8rem;
-    }
-
-    label {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-
-    input,
-    textarea {
+    .video-wrapper {
+      position: relative;
       width: 100%;
-      border-radius: 10px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.6rem 0.75rem;
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--text);
-      font-size: 0.9rem;
-      outline: none;
+      padding-bottom: 56.25%; /* 16:9 */
+      margin-bottom: 0.5rem;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #020617;
     }
 
-    input:focus,
-    textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.7);
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 110px;
+    /* CONTACT FLOATING BUTTON */
+
+    .floating-contact {
+      position: fixed;
+      right: 16px;
+      bottom: 18px;
+      z-index: 60;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      padding: 0.65rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 12px 32px rgba(129, 140, 248, 0.9);
     }
+
+    .floating-contact:hover {
+      transform: translateY(-1px);
+    }
+
+    /* CONTACT SECTION (পুরনো সাইটে ছিল, রাখতে চাইলে নিচের অংশ ইউজ করা যাবে)
+       এখানে আলাদা contact.html বানাচ্ছি, তাই এই ফাইলে আর contact section নেই। */
 
     /* FOOTER */
 
@@ -615,9 +596,6 @@
       .portfolio-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
     }
 
     @media (max-width: 640px) {
@@ -639,6 +617,10 @@
       .portfolio-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+      .floating-contact {
+        font-size: 0.8rem;
+        padding: 0.55rem 0.9rem;
+      }
     }
   </style>
 </head>
@@ -659,8 +641,9 @@
       <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
-        <a href="#portfolio">Showcase</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+        <a href="#videos">Channel</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html" class="nav-cta">Admin</a>
       </nav>
     </div>
   </header>
@@ -671,11 +654,11 @@
       <div class="container hero-grid">
         <div>
           <div class="eyebrow">Creative studio · Bangladesh</div>
-          <h1 class="hero-title">
+          <h1 class="hero-title" id="heroTitleDynamic">
             <span class="highlight">Ahyan Creations LTD</span><br />
-            AI powered music & digital experiences.
+            AI powered music &amp; digital experiences.
           </h1>
-          <p class="hero-subtitle">
+          <p class="hero-subtitle" id="heroSubtitleDynamic">
             Ahyan Creations একটি আধুনিক ক্রিয়েটিভ স্টুডিও – যেখানে AI, ডিজাইন
             আর ওয়েব টেকনোলজি মিলিয়ে বানানো হয় স্মার্ট প্রজেক্ট। নিজের
             এক্সপেরিমেন্ট, ক্লায়েন্ট প্রজেক্ট, আর পোর্টফোলিও সবকিছুর জন্য
@@ -686,8 +669,8 @@
             <a href="#services" class="btn-primary">
               <i class="fa-solid fa-bolt"></i> Get started
             </a>
-            <a href="#portfolio" class="btn-ghost">
-              <i class="fa-solid fa-headphones"></i> Listen / view demos
+            <a href="#videos" class="btn-ghost">
+              <i class="fa-solid fa-headphones"></i> Watch channel videos
             </a>
           </div>
 
@@ -795,24 +778,89 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO / SHOWCASE -->
-    <section id="portfolio">
+    <!-- YOUTUBE VIDEOS -->
+    <section id="videos">
       <div class="container">
-        <div class="section-label">Showcase</div>
-        <h2 class="section-title">Selected experiments & demos</h2>
+        <div class="section-label">Channel</div>
+        <h2 class="section-title">Latest videos from our YouTube</h2>
         <p class="section-subtitle">
-          নিচের কার্ডগুলোর জায়গায় তুমি পরে নিজের প্রজেক্টের লিংক, স্ক্রিনশট
-          বা মিউজিক ডেমো বসাতে পারো। আপাতত এগুলো প্লেসহোল্ডার হিসেবে রাখা।
+          Admin প্যানেল থেকে তুমি যে YouTube ভিডিও লিংকগুলো যোগ করবে, সেগুলো এখানে
+          এমবেড হয়ে দেখাবে।
         </p>
 
-        <div class="portfolio-grid">
-          <article class="shot">
-            <div class="shot-tag">Music</div>
-            <h3 class="shot-title">Lo‑Fi Night Session</h3>
-            <p class="shot-desc">
-              রাতের জন্য হালকা লো‑ফাই ট্র্যাক – focus / study / chill–এর
-              জন্য ডিজাইন করা AI জেনারেটেড মিউজিক।
-            </p>
-            <div class="shot-footer">
-              <span>03:12 · AI generated</span>
-          
+        <div class="portfolio-grid" id="videoList">
+          <!-- JavaScript এখানে ভিডিও কার্ড যোগ করবে -->
+        </div>
+      </div>
+    </section>
+
+    <!-- (ইচ্ছে করলে নীচের পুরনো portfolio section রেখেও দিতে পারো) -->
+  </main>
+
+  <!-- FLOATING CONTACT BUTTON -->
+  <a href="contact.html" class="floating-contact">
+    <i class="fa-solid fa-envelope"></i> Contact
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Ahyan Creations LTD. All rights reserved.</span>
+      <div class="socials">
+        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function appendVideoCard(container, video) {
+      const article = document.createElement("article");
+      article.className = "shot";
+      article.innerHTML = `
+        <div class="shot-tag">YouTube</div>
+        <h3 class="shot-title">${video.title}</h3>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/${video.id}" 
+                  allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="shot-footer">
+          <span>AI channel video</span>
+          <span style="color: var(--accent-2); font-size: 0.76rem;">Added from admin</span>
+        </div>
+      `;
+      container.prepend(article);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // hero texts override from localStorage (admin panel)
+      const storedTitle = localStorage.getItem("ahyanSiteTitle");
+      const storedSubtitle = localStorage.getItem("ahyanSiteSubtitle");
+      if (storedTitle) {
+        document.getElementById("heroTitleDynamic").innerHTML = storedTitle;
+      }
+      if (storedSubtitle) {
+        document.getElementById("heroSubtitleDynamic").textContent = storedSubtitle;
+      }
+
+      // videos
+      const listEl = document.getElementById("videoList");
+      if (listEl) {
+        const raw = localStorage.getItem("ahyanVideos");
+        if (raw) {
+          try {
+            const arr = JSON.parse(raw);
+            arr.forEach(v => appendVideoCard(listEl, v));
+          } catch (e) {
+            console.error("Video JSON parse error", e);
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
