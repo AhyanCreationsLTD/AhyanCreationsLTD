@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact · Ahyan Creations LTD</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1120;
+      --accent: #6366f1;
+      --accent-2: #ec4899;
+      --text: #f9fafb;
+      --text-soft: #9ca3af;
+      --border-soft: rgba(148, 163, 184, 0.3);
+      --radius: 14px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(900px, 94%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-logo {
+      width: 30px;
+      height: 30px;
+      border-radius: 11px;
+      background: radial-gradient(circle at 20% 20%, var(--accent-2), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(129, 140, 248, 0.8);
+    }
+
+    .brand-logo i {
+      color: white;
+      font-size: 15px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.9rem;
+    }
+
+    .brand-text span:first-child {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      color: var(--accent-2);
+    }
+
+    .pill-link {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: inline-flex;
+      gap: 0.4rem;
+      align-items: center;
+      color: var(--text-soft);
+    }
+
+    main {
+      padding: 2.3rem 0 2.5rem;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.98);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      padding: 1.6rem 1.5rem 1.8rem;
+      margin-top: 1rem;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+      margin-bottom: 0.4rem;
+    }
+
+    p.lead {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      margin-bottom: 1.3rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.6rem 0.75rem;
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.7);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      padding: 0.65rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: 0 12px 35px rgba(129, 140, 248, 0.8);
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 1.5rem 0;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-logo">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="brand-text">
+          <span>Contact</span>
+          <span>Ahyan Creations LTD</span>
+        </div>
+      </div>
+      <a href="index.html" class="pill-link">
+        <i class="fa-solid fa-house"></i> Back to home
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Get in touch</h1>
+      <p class="lead">
+        প্রোমোশন, কোলাবোরেশন, বা যেকোনো প্রশ্নের জন্য এই ফর্ম থেকে সরাসরি
+        আমাদের ইমেইলে মেসেজ পাঠাতে পারো।
+      </p>
+
+      <div class="card">
+        <!-- এখানে নিজের ইমেইল বসাও -->
+        <form
+          action="mailto:your-email@example.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div style="margin-top:0.7rem;">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+          <div style="margin-top:0.7rem;">
+            <label for="subject">Subject</label>
+            <input
+              id="subject"
+              name="subject"
+              type="text"
+              placeholder="Promotion / Collaboration / Other"
+            />
+          </div>
+          <div style="margin-top:0.7rem;">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Write your message..."
+              required
+            ></textarea>
+          </div>
+          <button class="btn-primary" type="submit">
+            <i class="fa-solid fa-paper-plane"></i> Send email
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Ahyan Creations LTD
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
